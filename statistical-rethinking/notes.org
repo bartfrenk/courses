@@ -1,0 +1,5 @@
+
+* Desiderata
+** Integrate this with the =courses= repository
+Clone it here: https://github.com/bartfrenk/courses
+
