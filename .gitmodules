@@ -1,3 +1,6 @@
 [submodule "tensorflow-for-data-and-deployment/external/dlaicourse"]
 	path = tensorflow-for-data-and-deployment/external/dlaicourse
 	url = git@github.com:lmoroney/dlaicourse.git
+[submodule "tensorflow-for-data-and-deployment/external/serving"]
+	path = tensorflow-for-data-and-deployment/external/serving
+	url = git@github.com:tensorflow/serving.git
