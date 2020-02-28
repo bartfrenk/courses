@@ -1,38 +1,30 @@
-from scipy.optimize import minimize_scalar
-from scipy.stats import norm
 import numpy as np
+from scipy.optimize import minimize
 from sklearn.linear_model import LinearRegression
-import matplotlib.pyplot as plt
 
 
-def compute_location(f):
-    maximum = minimize_scalar(lambda x: -f(x))
+def _compute_location(f, x_):
+    # This does not always find the mode
+    maximum = minimize(lambda x: -f(x), x_, method="BFGS")
     maximum.fun = -maximum.fun
-    return maximum.x
+    return maximum.x[0]
 
 
-def compute_scale(f, x, dx=0.1):
-    g = lambda x: np.log(f(x)) - x
-    xs = np.linspace(x - dx, x + dx)
+def _compute_scale(f, x0, dx=0.1, k=5):
+    g = lambda x: np.log(f(x)) - x0
+    xs = np.linspace(x0 - dx, x0 + dx)
     ys = np.array([g(x) for x in xs])
-    phi = xs ** 2
-    phi = phi.reshape((len(phi), 1))
+    arrays = []
+    for n in range(1, k + 1):
+        t = xs ** n
+        t = t.reshape((len(t), 1))
+        arrays.append(t)
+    phi = np.hstack(arrays)
     res = LinearRegression().fit(phi, ys)
-    return -res.coef_[0]
+    return np.sqrt(-1 / (2 * res.coef_[1]))
 
 
-def main():
-    f = norm.pdf
-    location = compute_location(f)
-    scale = compute_scale(f, location)
-
-    approximation = lambda x: norm.pdf(x, location, scale)
-
-    xs = np.linspace(-3, 3, 100)
-    plt.plot(xs, [f(x) for x in xs], label="original")
-    plt.plot(xs, [approximation(x) for x in xs], label="approximation")
-    plt.legend()
-    plt.show()
-
-
-main()
+def laplace_approximation(f, x_, dx=0.1):
+    location = _compute_location(f, x_)
+    scale = _compute_scale(f, location, dx)
+    return (location, scale)
