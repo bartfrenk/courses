@@ -4,3 +4,6 @@
 [submodule "tensorflow-for-data-and-deployment/external/serving"]
 	path = tensorflow-for-data-and-deployment/external/serving
 	url = git@github.com:tensorflow/serving.git
+[submodule "statistical-rethinking/external/rethinking"]
+	path = statistical-rethinking/external/rethinking
+	url = git@github.com:rmcelreath/rethinking.git
