@@ -1,0 +1,6 @@
+[submodule "advanced-deployment-scenarios-with-tensorflow/external/serving"]
+	path = advanced-deployment-scenarios-with-tensorflow/external/serving
+	url = git@github.com:tensorflow/serving.git
+[submodule "advanced-deployment-scenarios-with-tensorflow/external/dlaicourse"]
+	path = advanced-deployment-scenarios-with-tensorflow/external/dlaicourse
+	url = git@github.com:lmoroney/dlaicourse.git
