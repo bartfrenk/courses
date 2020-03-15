@@ -114,6 +114,8 @@ impl<'a, T> Iterator for Iter<'a, T> {
 
     fn next(&mut self) -> Option<Self::Item> {
         self.next.map(|node| {
+            // as_ref(&self) -> Option<&T> = &Option<T> -> Option<&T>
+            // next: Option<&Node<T>>
             self.next = node.next.as_ref().map(|node| &**node);
             &node.elem
         })
