@@ -1,8 +1,11 @@
+# pylint: disable=unused-variable
 from collections import namedtuple
-import numpy as np
-import yaml
+
 import matplotlib.pyplot as plt
+import numpy as np
 import seaborn as sns
+
+import yaml
 
 # Exercises 3H
 
