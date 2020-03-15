@@ -79,7 +79,6 @@ class ModelExpr:
         return f"{self.target} = {' + '.join(parts)}"
 
     def values(self, df):
-        y = df[self.target].values
         return (df[self.target].values, design_matrix(df, self))
 
     def model(self, df):
@@ -128,7 +127,6 @@ def compare_models(traces, exprs):
     )
     measures["dwaic"] = np.max(measures.waic) - measures.waic
     measures["aikake_weights"] = compute_aikake_weights(measures.waic.values)
-    measures.sort_values(by="waic", inplace=True, ascending=False)
     return measures
 
 
@@ -148,6 +146,15 @@ def sample_model(expr, trace, n, **terms):
     intercept = trace["intercept"][indices]
     terms = trace["terms"][indices].transpose()
     return (xs, intercept + np.dot(X, terms))
+
+
+def sample_mixture(exprs, traces, n, ps, **terms):
+    counts = np.random.multinomial(n, pvals=ps)
+    samples = []
+    for (expr, trace, count) in zip(exprs, traces, counts):
+        (xs, yss) = sample_model(expr, trace, n=count, **terms)
+        samples.append(yss)
+    return (xs, np.hstack(samples))
 
 
 def plot_lm(ax, expr, trace, *, n=10000, **terms):
