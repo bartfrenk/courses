@@ -1,4 +1,4 @@
-from rethinking.types import Interval
+from rethinking.misc import Interval
 
 
 def hdpi(p, sample, sorted=False):

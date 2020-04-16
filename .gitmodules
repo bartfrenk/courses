@@ -4,3 +4,6 @@
 [submodule "advanced-deployment-scenarios-with-tensorflow/external/dlaicourse"]
 	path = advanced-deployment-scenarios-with-tensorflow/external/dlaicourse
 	url = git@github.com:lmoroney/dlaicourse.git
+[submodule "statistical-rethinking/external/rethinking"]
+	path = statistical-rethinking/external/rethinking
+    url = git@github.com:rmcelreath/rethinking.git
