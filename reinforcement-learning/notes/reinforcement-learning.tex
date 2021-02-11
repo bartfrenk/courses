@@ -1,0 +1,63 @@
+% Created 2020-12-17 do 13:10
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Bart Frenk}
+\date{\today}
+\title{Notes on reinforcement learning}
+\hypersetup{
+ pdfauthor={Bart Frenk},
+ pdftitle={Notes on reinforcement learning},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.3 (Org mode 9.1.9)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Fundamentals of reinforcement learning}
+\label{sec:org5a63358}
+\subsection{Week 1}
+\label{sec:orgb00a6ba}
+\subsubsection{Action-value methods for k-armed bandit problems}
+\label{sec:orgb01f3ba}
+\subsubsection{Incrementally computing action-values}
+\label{sec:org8b686ae}
+\begin{itemize}
+\item Use \(Q_{n+1}(a) = Q_n(a) + \alpha_n(a) [R_n(a) - Q_n(a)]\)
+\end{itemize}
+
+\subsubsection{Non-stationary k-armed bandits}
+\label{sec:org38be267}
+\begin{itemize}
+\item Exponential recency-weighted average \(\alpha_n(a) = \alpha\)
+\end{itemize}
+\subsubsection{Optimistic initial values}
+\label{sec:org34450b5}
+\begin{itemize}
+\item To encourage exploration at the start
+\end{itemize}
+\subsubsection{Upper-confidence-bound action selection}
+\label{sec:org2e5f11c}
+\begin{itemize}
+\item Select action \(a\) that maximizes
+$$
+     Q_t(a) + c \sqrt{\frac{\ln t}{N_t(a)}}
+  $$
+\end{itemize}
+\end{document}

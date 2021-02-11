@@ -1,0 +1,21 @@
+#+TITLE: Notes on reinforcement learning
+#+AUTHOR: Bart Frenk
+
+* Fundamentals of reinforcement learning
+** Week 1
+*** Action-value methods for k-armed bandit problems
+*** Incrementally computing action-values
+- Use $Q_{n+1}(a) = Q_n(a) + \alpha_n(a) [R_n(a) - Q_n(a)]$
+
+*** Non-stationary k-armed bandits
+- Exponential recency-weighted average: $\alpha_n(a) = \alpha$
+*** Optimistic initial values
+- To encourage exploration at the start 
+*** Upper-confidence-bound action selection
+- Select action $a$ that maximizes
+  $$
+     Q_t(a) + c \sqrt{\frac{\ln t}{N_t(a)}}
+  $$
+*** Real-world reinforcement learning
+- https://azure.microsoft.com/en-us/services/cognitive-services/personalizer/
+- https://vowpalwabbit.org/ (and [[https://vowpalwabbit.org/tutorials/contextual_bandits.html][this]] tutorial on contextual bandits)
