@@ -8,7 +8,7 @@ edition = "2018"
 
 [dependencies]
 hyper = "0.13.2"
-tokio = { version = "0.2.11", features = ["full"] }
+tokio = { version = "1.8.4", features = ["full"] }
 
 failure = "0.1.6"
 reqwest = "0.9.24"
